@@ -4,6 +4,7 @@
 # Known to work on 2.4.6 kernels.
 #
 Facter.add("ipv6_enabled") do
+  confine :kernel => 'Linux'
   setcode do
     retval = false
     ipv6_enabled = Facter::Core::Execution.exec('/sbin/sysctl -n -e net.ipv6.conf.all.disable_ipv6')
